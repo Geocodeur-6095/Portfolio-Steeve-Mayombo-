@@ -1,0 +1,52 @@
+{
+  "name": "Project",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Titre du projet"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description courte du projet"
+    },
+    "full_description": {
+      "type": "string",
+      "description": "Description compl\u00e8te du projet"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "web",
+        "design",
+        "graphisme",
+        "video"
+      ],
+      "description": "Cat\u00e9gorie du projet"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Image de couverture du projet"
+    },
+    "technologies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Technologies/outils utilis\u00e9s"
+    },
+    "project_url": {
+      "type": "string",
+      "description": "Lien vers le projet live"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Projet mis en avant"
+    }
+  },
+  "required": [
+    "title",
+    "category"
+  ]
+}

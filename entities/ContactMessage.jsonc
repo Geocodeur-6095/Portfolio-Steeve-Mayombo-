@@ -1,0 +1,70 @@
+{
+  "name": "ContactMessage",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nom du visiteur"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email du visiteur"
+    },
+    "subject": {
+      "type": "string",
+      "enum": [
+        "Dev Web",
+        "Design",
+        "Graphisme",
+        "Montage Vid\u00e9o",
+        "Autre"
+      ],
+      "description": "Sujet du message"
+    },
+    "message": {
+      "type": "string",
+      "description": "Contenu du message"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "read",
+        "replied"
+      ],
+      "default": "new",
+      "description": "Statut du message"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "subject",
+    "message"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
